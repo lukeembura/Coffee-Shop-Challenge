@@ -26,4 +26,6 @@ class Customer:
     def most_aficianado(cls, coffee):
         top_customer = None
         max_orders = 0
-        
+        for customer in {order.customer for order in coffee.orders()}:
+            total = sum(order.price for order in customer.orders() if order.coffee == coffee)
+            
