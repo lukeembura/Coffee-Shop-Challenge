@@ -15,4 +15,6 @@ class Coffee:
     def customers(self):
         return list({order.customer for order in self.orders()})
     
+    def num_orders(self):
+        return len(self.orders())
     
