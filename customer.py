@@ -12,3 +12,8 @@ class Customer:
             self._name = value
         else:
             raise Exception("Name must be a string between 1 and 15 characters.")
+
+    def orders(self):
+        return [order for order in Order.all_orders if order.customer == self]
+    
+    
