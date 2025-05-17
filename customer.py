@@ -28,4 +28,8 @@ class Customer:
         max_orders = 0
         for customer in {order.customer for order in coffee.orders()}:
             total = sum(order.price for order in customer.orders() if order.coffee == coffee)
-            
+            if total > max_spent:
+                max_spent = total
+                top_customer = customer
+        return top_customer
+
