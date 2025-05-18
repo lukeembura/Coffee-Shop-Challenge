@@ -60,5 +60,26 @@ def get_customer_coffees(name):
         return jsonify({"error": "Customer not found"}), 404
     return jsonify([coffee.name for coffee in customer.coffees()])
 
+# Test route to list all customers
+@app.route("/test/customers", methods=["GET"])
+def list_customers():
+    return jsonify([customer.name for customer in customers])
+
+# Test route to list all coffees
+@app.route("/test/coffees", methods=["GET"])
+def list_coffees():
+    return jsonify([coffee.name for coffee in coffees])
+
+# Test route to list all orders
+@app.route("/test/orders", methods=["GET"])
+def list_orders():
+    return jsonify([
+        {
+            "customer": order.customer.name,
+            "coffee": order.coffee.name,
+            "price": order.price
+        } for order in orders
+    ])
+
 if __name__ == "__main__":
     app.run(debug=True)
